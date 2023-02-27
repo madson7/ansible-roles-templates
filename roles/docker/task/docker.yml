@@ -1,0 +1,21 @@
+---
+# tasks file for role/docker
+
+- name: Instalar o Docker
+  become: true
+  apt:
+    name: docker.io
+    state: present
+
+- name: Iniciar o serviço Docker
+  become: true
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
+
+- name: Adicionar usuário ao grupo docker
+  user:
+    name: ubuntu
+    groups: docker
+    append: yes

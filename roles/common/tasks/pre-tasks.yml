@@ -1,0 +1,20 @@
+---
+# tasks file for role/common
+
+- name: "install_task | Update repositories cache"
+  apt:
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+
+- name: "install_task | Update all packages to their latest version"
+  apt:
+    name: "*"
+    state: latest
+  when: ansible_os_family == "Debian"
+
+- name: "install_task | packages"
+  apt: name={{item}} state=present
+  with_items:
+    - wget
+    - curl
+    - python3
