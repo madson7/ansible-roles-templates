@@ -1,0 +1,14 @@
+---
+# tasks file for role/proxy
+- name: Copiar o arquivo de configuração
+  copy:
+    src: ./file/grafana.conf
+    # src: grafana.conf
+    dest: /etc/nginx/nginx.conf
+  notify:
+    - restart nginx
+
+- name: Reiniciar o Nginx
+  service:
+    name: nginx
+    state: restarted

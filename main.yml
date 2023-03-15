@@ -7,3 +7,8 @@
   become: yes
   roles:
   - { role: docker}
+
+- hosts: nginx
+  become: yes
+  roles:
+  - { role: proxy}

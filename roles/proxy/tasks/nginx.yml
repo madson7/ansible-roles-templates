@@ -1,0 +1,16 @@
+---
+# tasks file for role/nginx
+
+- name: Instalar o nginx
+  become: true
+  apt:
+    name: nginx
+    state: present
+
+- name: Iniciar o serviço nginx
+  become: true
+  systemd:
+    name: nginx
+    enabled: yes
+    state: started
+

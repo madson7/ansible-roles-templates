@@ -1,0 +1,4 @@
+---
+# tasks file for roles/proxy
+- include_tasks: nginx.yml
+- include_tasks: proxy.yml
